@@ -27,7 +27,8 @@ class TestRSAPSS(unittest.TestCase):
 
     def test_signature_length(self):
         sig_length_bytes = (self.signature.bit_length() + 7) // 8
-        self.assertTrue(sig_length_bytes >= 256)
+        modulus_length_bytes = (self.public_key[1].bit_length() + 7) // 8
+        self.assertEqual(sig_length_bytes, modulus_length_bytes)
 
 
 if __name__ == '__main__':
